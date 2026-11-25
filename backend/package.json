@@ -1,0 +1,20 @@
+{
+  "name": "countryrush-backend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "CountryRush Cloudflare Workers + Durable Objects multiplayer backend (Phase 1 Foundation)",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250204.0",
+    "typescript": "~5.7.2",
+    "wrangler": "^3.105.0"
+  }
+}

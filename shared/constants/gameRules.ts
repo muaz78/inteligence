@@ -1,0 +1,43 @@
+// Shared Game Rules, Timers, Scoring Constants, and Rate-Limit Thresholds
+// Used consistently across frontend UI estimates and server authoritative validation.
+
+export const GAME_RULES = {
+  // Match round defaults
+  DEFAULT_RANKED_1V1_ROUNDS: 8,
+  DEFAULT_RANKED_2V2_ROUNDS: 10,
+  DEFAULT_QUICKPLAY_ROUNDS: 6,
+  ROUND_DURATION_SEC: 10,
+  INTERMISSION_DURATION_SEC: 3,
+  COUNTDOWN_BEFORE_MATCH_SEC: 3,
+
+  // Matchmaking & AI fallback (Phase 4 & 5)
+  MATCHMAKING_AI_FALLBACK_SEC: 20,
+  MATCHMAKING_AI_FALLBACK_MS: 20_000,
+  MATCHMAKING_MMR_INITIAL_WINDOW: 120,
+  MATCHMAKING_MMR_EXPANDED_WINDOW: 300,
+
+  // Authoritative scoring constants (Phase 6)
+  BASE_CORRECT_POINTS: 200,
+  FAST_SPEED_THRESHOLD_MS: 3000,
+  FAST_SPEED_BONUS_POINTS: 60,
+  MEDIUM_SPEED_THRESHOLD_MS: 6000,
+  MEDIUM_SPEED_BONUS_POINTS: 30,
+  STREAK_STEP_MULTIPLIER: 0.1,
+  MAX_STREAK_MULTIPLIER: 2.0,
+  HINT_PENALTY_POINTS: 25,
+  MAX_HINTS_PER_ROUND: 2,
+
+  // Chat & Anti-spam (Phase 7)
+  MAX_CHAT_MESSAGE_LENGTH: 160,
+  CHAT_MIN_INTERVAL_MS: 1200,
+
+  // Anti-repeat memory
+  PLAYER_ANTI_REPEAT_HISTORY_LIMIT: 40,
+} as const;
+
+export const RATE_LIMIT_POLICIES = {
+  HTTP_API_RPM: 120,
+  MATCHMAKING_JOIN_RPM: 15,
+  WS_MESSAGES_PER_10_SEC: 25,
+  CHAT_MESSAGES_PER_10_SEC: 5,
+} as const;

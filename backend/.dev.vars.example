@@ -1,0 +1,21 @@
+# ==============================================================================
+# CountryRush Backend — Cloudflare Workers Local Secrets Template (.dev.vars)
+# ==============================================================================
+# Copy to `backend/.dev.vars` for local `wrangler dev` usage ONLY.
+# NEVER commit `.dev.vars` to version control.
+# For deployed Cloudflare Workers environments, set these securely via CLI:
+#   `wrangler secret put <SECRET_NAME>`
+# ==============================================================================
+
+# Supabase Project URL (can also live in wrangler.toml [vars], kept here if environment-specific)
+SUPABASE_URL=
+
+# Supabase Service Role Key — STRICTLY SERVER-SIDE ONLY (bypasses RLS inside Workers/DO)
+# Never expose this key in `VITE_*` variables or client code.
+SUPABASE_SERVICE_ROLE_KEY=
+
+# Supabase JWT Secret (optional: symmetric HS256 fast-path only; ES256/RS256 tokens verify via SUPABASE_URL + service role)
+SUPABASE_JWT_SECRET=
+
+# Required internal HMAC key used to sign short-lived single-use Durable Object WebSocket join tickets
+INTERNAL_WS_TICKET_SECRET=

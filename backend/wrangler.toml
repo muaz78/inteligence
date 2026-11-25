@@ -1,0 +1,33 @@
+# CountryRush Backend — Cloudflare Workers & Durable Objects Configuration Template
+# Documentation: https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "countryrush-api"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# ==============================================================================
+# Public Non-Secret Worker Variables
+# ==============================================================================
+# NEVER place SUPABASE_SERVICE_ROLE_KEY or secrets in [vars]!
+# Use `backend/.dev.vars` locally and `wrangler secret put` in production.
+[vars]
+ENVIRONMENT = "development"
+ALLOWED_ORIGINS = "http://localhost:5173,http://127.0.0.1:5173"
+BOT_FALLBACK_DELAY_MS = "20000"
+
+# ==============================================================================
+# Durable Objects Bindings (Phase 3+ Authoritative Match State & Matchmaking)
+# ==============================================================================
+[[durable_objects.bindings]]
+name = "MATCH_ROOM"
+class_name = "MatchRoomDO"
+
+[[durable_objects.bindings]]
+name = "MATCHMAKING_QUEUE"
+class_name = "MatchmakingQueueDO"
+
+# Durable Object SQLite/storage migrations (applied upon first Cloudflare deployment)
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["MatchRoomDO", "MatchmakingQueueDO"]
